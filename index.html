@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monisha Electronics — Suri's Trusted Electronics Showroom</title>
+<meta name="description" content="Monisha Electronics, Suri MD Bazar — Genuine smartphones, ACs, refrigerators, washing machines & more. Local pickup, fast delivery, expert repair.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ SHUTTER INTRO ============ -->
+<div class="shutter" id="shutter" aria-hidden="true">
+  <div class="shutter-slat"></div>
+  <div class="shutter-slat"></div>
+  <div class="shutter-slat"></div>
+  <div class="shutter-slat"></div>
+  <div class="shutter-slat"></div>
+  <div class="shutter-slat"></div>
+  <div class="shutter-slat"></div>
+  <div class="shutter-slat"></div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <p class="topbar-msg"><span class="dot-pulse" aria-hidden="true"></span> Showroom open today · Suri, MD Bazar — local pickup &amp; same-day delivery in town</p>
+      <p class="topbar-phone">Call the shop: <a href="tel:+918617801040">+91 86178 01040</a></p>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <div class="wrap navbar-inner">
+      <a href="#top" class="logo" aria-label="Monisha Electronics home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="40" height="40">
+            <rect x="3" y="3" width="34" height="34" rx="9" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M20 11 L13 22 H19 L17 29 L27 17 H20 Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="logo-text">
+          <span class="logo-name">Monisha</span>
+          <span class="logo-sub">ELECTRONICS</span>
+        </span>
+      </a>
+
+      <form class="search-form" role="search" aria-label="Search products">
+        <input type="search" id="searchInput" placeholder="Search ACs, fridges, smartphones, repairs…" aria-label="Search products">
+        <button type="submit" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </form>
+
+      <div class="nav-actions">
+        <nav class="main-nav" aria-label="Primary">
+          <a href="#categories">Categories</a>
+          <a href="#bestsellers">Best Sellers</a>
+          <a href="#services">Services</a>
+          <a href="#footer">Contact</a>
+        </nav>
+        <button class="icon-btn" id="searchToggle" aria-label="Open search" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <button class="icon-btn cart-btn" id="cartToggle" aria-label="Open cart, 0 items" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.4 12.4a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.6L21 8H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="21" r="1.4" fill="currentColor"/><circle cx="18" cy="21" r="1.4" fill="currentColor"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- mobile menu -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="#categories">Categories</a>
+    <a href="#bestsellers">Best Sellers</a>
+    <a href="#services">Services</a>
+    <a href="#footer">Contact</a>
+  </nav>
+</header>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="cart-head">
+    <h2>Your Cart</h2>
+    <button class="icon-btn" id="cartClose" aria-label="Close cart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">Your cart is empty. Browse the showroom and tap <strong>Add to Cart</strong> on anything you like.</p>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-total-row">
+      <span>Estimated total</span>
+      <strong id="cartTotal">₹0</strong>
+    </div>
+    <button class="btn btn-primary btn-full" id="checkoutBtn">Proceed to Checkout</button>
+    <p class="cart-note">Prices include GST. Final price confirmed at the showroom.</p>
+  </div>
+</aside>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-led" aria-hidden="true"></span> Suri's Showroom for Genuine Electronics</p>
+        <h1>Power your home.<br><span class="accent-text">Trust your shop.</span></h1>
+        <p class="hero-sub">From flagship phones to the fridge that runs your kitchen — Monisha Electronics has stocked MD Bazar with genuine, warrantied electronics since day one. Walk in, or get it delivered to your door today.</p>
+        <div class="hero-cta-row">
+          <a href="#categories" class="btn btn-primary">Shop Now
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#services" class="btn btn-ghost">Book a Repair</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><strong>12+ yrs</strong><span>serving Suri</span></div>
+          <div class="trust-item"><strong>4.8★</strong><span>shop rating</span></div>
+          <div class="trust-item"><strong>3,000+</strong><span>happy homes</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card hero-card-main">
+          <div class="hero-card-glow"></div>
+          <svg viewBox="0 0 200 240" class="hero-illustration">
+            <rect x="35" y="10" width="130" height="220" rx="18" fill="#1B212C" stroke="#FFB02E" stroke-width="2"/>
+            <rect x="48" y="28" width="104" height="170" rx="6" fill="#0D1015"/>
+            <rect x="70" y="207" width="60" height="6" rx="3" fill="#2A323F"/>
+            <circle cx="100" cy="110" r="34" fill="none" stroke="#1FC9A8" stroke-width="2.5" opacity="0.7"/>
+            <path d="M85 110l11 11 22-26" stroke="#1FC9A8" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="hero-card hero-card-float-1">
+          <span class="float-label">GENUINE</span>
+          <span class="float-value">100%</span>
+        </div>
+        <div class="hero-card hero-card-float-2">
+          <span class="float-label">DELIVERY</span>
+          <span class="float-value">Same Day</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORIES ============ -->
+  <section class="section categories" id="categories">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-dark">SHOP BY CATEGORY</p>
+        <h2>Everything for your home, under one roof</h2>
+      </div>
+
+      <div class="cat-grid">
+
+        <article class="cat-card" data-cat="mobiles">
+          <span class="cat-tag">CAT / 01 — MOBILES</span>
+          <div class="cat-art">
+            <svg viewBox="0 0 120 120" width="72" height="72"><rect x="38" y="14" width="44" height="92" rx="9" fill="none" stroke="currentColor" stroke-width="3"/><rect x="46" y="26" width="28" height="58" rx="2" fill="currentColor" opacity="0.12"/><circle cx="60" cy="96" r="3" fill="currentColor"/></svg>
+          </div>
+          <h3>Smartphones &amp; Mobiles</h3>
+          <p>Latest flagships to budget-friendly daily drivers, all with full manufacturer warranty.</p>
+          <div class="cat-meta">
+            <span class="price">From <strong>₹8,999</strong></span>
+            <button class="btn-small" data-add="Smartphone (Entry Bundle)" data-price="8999">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="cat-card" data-cat="appliances">
+          <span class="cat-tag">CAT / 02 — APPLIANCES</span>
+          <div class="cat-art">
+            <svg viewBox="0 0 120 120" width="72" height="72"><rect x="32" y="10" width="56" height="100" rx="7" fill="none" stroke="currentColor" stroke-width="3"/><line x1="32" y1="44" x2="88" y2="44" stroke="currentColor" stroke-width="3"/><circle cx="42" cy="26" r="2.5" fill="currentColor"/><circle cx="42" cy="60" r="2.5" fill="currentColor"/></svg>
+          </div>
+          <h3>Refrigerators &amp; Washing Machines</h3>
+          <p>Energy-efficient fridges and washers from trusted brands, installed and demoed at your home.</p>
+          <div class="cat-meta">
+            <span class="price">From <strong>₹14,490</strong></span>
+            <button class="btn-small" data-add="Double-Door Refrigerator (190L)" data-price="14490">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="cat-card" data-cat="cooling">
+          <span class="cat-tag">CAT / 03 — COOLING</span>
+          <div class="cat-art">
+            <svg viewBox="0 0 120 120" width="72" height="72"><rect x="18" y="38" width="84" height="32" rx="6" fill="none" stroke="currentColor" stroke-width="3"/><line x1="30" y1="38" x2="30" y2="70" stroke="currentColor" stroke-width="2"/><line x1="44" y1="38" x2="44" y2="70" stroke="currentColor" stroke-width="2"/><line x1="58" y1="38" x2="58" y2="70" stroke="currentColor" stroke-width="2"/><line x1="72" y1="38" x2="72" y2="70" stroke="currentColor" stroke-width="2"/><line x1="86" y1="38" x2="86" y2="70" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>ACs &amp; Air Coolers</h3>
+          <p>Split ACs, window units and air coolers sized right for Suri's summers — with free site visit.</p>
+          <div class="cat-meta">
+            <span class="price">From <strong>₹6,250</strong></span>
+            <button class="btn-small" data-add="Air Cooler (Tower, 40L)" data-price="6250">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="cat-card" data-cat="furniture">
+          <span class="cat-tag">CAT / 04 — FURNITURE</span>
+          <div class="cat-art">
+            <svg viewBox="0 0 120 120" width="72" height="72"><path d="M28 56V32a6 6 0 0 1 6-6h52a6 6 0 0 1 6 6v24" fill="none" stroke="currentColor" stroke-width="3"/><rect x="22" y="56" width="76" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="3"/><line x1="28" y1="76" x2="28" y2="92" stroke="currentColor" stroke-width="3"/><line x1="92" y1="76" x2="92" y2="92" stroke="currentColor" stroke-width="3"/></svg>
+          </div>
+          <h3>Home &amp; Office Furniture</h3>
+          <p>Sofas, study tables, almirahs and modular units to finish the room your new appliance lives in.</p>
+          <div class="cat-meta">
+            <span class="price">From <strong>₹3,499</strong></span>
+            <button class="btn-small" data-add="Study Table (Compact)" data-price="3499">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="cat-card" data-cat="audio">
+          <span class="cat-tag">CAT / 05 — AUDIO</span>
+          <div class="cat-art">
+            <svg viewBox="0 0 120 120" width="72" height="72"><path d="M30 70V52a30 30 0 0 1 60 0v18" fill="none" stroke="currentColor" stroke-width="3"/><rect x="22" y="66" width="16" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="3"/><rect x="82" y="66" width="16" height="26" rx="6" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+          </div>
+          <h3>Audio &amp; Headphones</h3>
+          <p>Bluetooth speakers, soundbars and noise-cancelling headphones for music that actually moves you.</p>
+          <div class="cat-meta">
+            <span class="price">From <strong>₹999</strong></span>
+            <button class="btn-small" data-add="Bluetooth Earbuds (ANC)" data-price="999">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="cat-card" data-cat="accessories">
+          <span class="cat-tag">CAT / 06 — ACCESSORIES</span>
+          <div class="cat-art">
+            <svg viewBox="0 0 120 120" width="72" height="72"><rect x="24" y="40" width="72" height="40" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><line x1="38" y1="56" x2="82" y2="56" stroke="currentColor" stroke-width="3"/><line x1="38" y1="64" x2="64" y2="64" stroke="currentColor" stroke-width="3"/></svg>
+          </div>
+          <h3>Cables, Chargers &amp; More</h3>
+          <p>Fast chargers, power banks, cases, extension boards — the everyday bits you always run out of.</p>
+          <div class="cat-meta">
+            <span class="price">From <strong>₹149</strong></span>
+            <button class="btn-small" data-add="Fast Charger (33W)" data-price="149">Add to Cart</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BEST SELLERS ============ -->
+  <section class="section bestsellers" id="bestsellers">
+    <div class="wrap">
+      <div class="section-head section-head-row">
+        <div>
+          <p class="eyebrow eyebrow-dark">FRESH OFF THE SHELF</p>
+          <h2>Best sellers this month</h2>
+        </div>
+        <div class="scroll-hint">Swipe to browse →</div>
+      </div>
+
+      <div class="product-rail" id="productRail">
+
+        <article class="product-card" data-name="Nova X12 Pro Smartphone" data-price="24999">
+          <div class="product-badge badge-hot">Best Seller</div>
+          <div class="product-thumb">
+            <svg viewBox="0 0 120 150" width="84" height="105"><rect x="20" y="6" width="80" height="138" rx="16" fill="none" stroke="currentColor" stroke-width="3"/><rect x="30" y="20" width="60" height="100" rx="3" fill="currentColor" opacity="0.1"/><circle cx="60" cy="132" r="4" fill="currentColor"/></svg>
+          </div>
+          <h3>Nova X12 Pro Smartphone</h3>
+          <p class="product-spec">8GB RAM · 128GB · 5000mAh · Triple Camera</p>
+          <div class="product-foot">
+            <span class="price">₹24,999</span>
+            <button class="btn-small" data-add="Nova X12 Pro Smartphone" data-price="24999">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-name="AeroPods ANC Headphones" data-price="2799">
+          <div class="product-badge badge-new">New</div>
+          <div class="product-thumb">
+            <svg viewBox="0 0 120 120" width="84" height="84"><path d="M28 64V46a32 32 0 0 1 64 0v18" fill="none" stroke="currentColor" stroke-width="3"/><rect x="20" y="60" width="18" height="30" rx="7" fill="none" stroke="currentColor" stroke-width="3"/><rect x="82" y="60" width="18" height="30" rx="7" fill="none" stroke="currentColor" stroke-width="3"/></svg>
+          </div>
+          <h3>AeroPods ANC Headphones</h3>
+          <p class="product-spec">Active Noise Cancelling · 40h Battery</p>
+          <div class="product-foot">
+            <span class="price">₹2,799</span>
+            <button class="btn-small" data-add="AeroPods ANC Headphones" data-price="2799">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-name="CoolBreeze 1.5T Split AC" data-price="32990">
+          <div class="product-badge badge-hot">Best Seller</div>
+          <div class="product-thumb">
+            <svg viewBox="0 0 140 90" width="98" height="63"><rect x="10" y="20" width="120" height="42" rx="10" fill="none" stroke="currentColor" stroke-width="3"/><line x1="26" y1="20" x2="26" y2="62" stroke="currentColor" stroke-width="2"/><line x1="44" y1="20" x2="44" y2="62" stroke="currentColor" stroke-width="2"/><line x1="62" y1="20" x2="62" y2="62" stroke="currentColor" stroke-width="2"/><line x1="80" y1="20" x2="80" y2="62" stroke="currentColor" stroke-width="2"/><line x1="98" y1="20" x2="98" y2="62" stroke="currentColor" stroke-width="2"/><line x1="116" y1="20" x2="116" y2="62" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>CoolBreeze 1.5T Split AC</h3>
+          <p class="product-spec">5-Star Rating · Inverter · Copper Coil</p>
+          <div class="product-foot">
+            <span class="price">₹32,990</span>
+            <button class="btn-small" data-add="CoolBreeze 1.5T Split AC" data-price="32990">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-name="FrostKing 260L Refrigerator" data-price="21490">
+          <div class="product-thumb">
+            <svg viewBox="0 0 110 140" width="78" height="100"><rect x="18" y="6" width="74" height="128" rx="9" fill="none" stroke="currentColor" stroke-width="3"/><line x1="18" y1="56" x2="92" y2="56" stroke="currentColor" stroke-width="3"/><circle cx="30" cy="22" r="2.4" fill="currentColor"/><circle cx="30" cy="74" r="2.4" fill="currentColor"/></svg>
+          </div>
+          <h3>FrostKing 260L Refrigerator</h3>
+          <p class="product-spec">Double Door · Frost-Free · 3 Star</p>
+          <div class="product-foot">
+            <span class="price">₹21,490</span>
+            <button class="btn-small" data-add="FrostKing 260L Refrigerator" data-price="21490">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-name="SpinEase 7kg Washing Machine" data-price="16990">
+          <div class="product-badge badge-new">New</div>
+          <div class="product-thumb">
+            <svg viewBox="0 0 110 130" width="78" height="92"><rect x="14" y="6" width="82" height="118" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="55" cy="70" r="30" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="55" cy="70" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"/><circle cx="26" cy="20" r="2.5" fill="currentColor"/></svg>
+          </div>
+          <h3>SpinEase 7kg Washing Machine</h3>
+          <p class="product-spec">Fully Automatic · Front Load</p>
+          <div class="product-foot">
+            <span class="price">₹16,990</span>
+            <button class="btn-small" data-add="SpinEase 7kg Washing Machine" data-price="16990">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-name="PulseBeam Soundbar 2.1" data-price="4490">
+          <div class="product-thumb">
+            <svg viewBox="0 0 140 70" width="98" height="49"><rect x="10" y="20" width="120" height="30" rx="10" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="30" cy="35" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="70" cy="35" r="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="110" cy="35" r="6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>PulseBeam Soundbar 2.1</h3>
+          <p class="product-spec">120W · Bluetooth 5.3 · Deep Bass</p>
+          <div class="product-foot">
+            <span class="price">₹4,490</span>
+            <button class="btn-small" data-add="PulseBeam Soundbar 2.1" data-price="4490">Add to Cart</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES / SERVICES ============ -->
+  <section class="section services" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">WHY MD BAZAR SHOPS WITH US</p>
+        <h2>Service the way a neighbourhood shop should</h2>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>100% Genuine Products</h3>
+          <p>Every item is sourced directly from authorized distributors with full manufacturer warranty and a printed bill, every single time.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Fast Local Delivery</h3>
+          <p>Order before 4 PM and most appliances reach your home in MD Bazar and around Suri the same day — installed and demoed, free.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 0 1 1.4 0l1.6 1.6a1 1 0 0 1 0 1.4L9.4 17.6a3 3 0 0 1-1.3.8l-3 .9a.6.6 0 0 1-.7-.7l.9-3a3 3 0 0 1 .8-1.3l8.6-8.6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M13 7l4 4" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>Expert Repair Services</h3>
+          <p>In-house technicians for AC servicing, fridge gas refill, washing machine repair and mobile screen replacement — pickup available.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISIT / CTA STRIP ============ -->
+  <section class="visit-strip">
+    <div class="wrap visit-inner">
+      <div class="visit-text">
+        <p class="eyebrow eyebrow-on-dark">VISIT THE SHOWROOM</p>
+        <h2>See it, touch it, take it home today.</h2>
+        <p class="visit-addr">Monisha Electronics, MD Bazar Road, Suri, Birbhum, West Bengal — open 10:00 AM to 8:30 PM, all days except Sundays.</p>
+      </div>
+      <a href="tel:+918617801040" class="btn btn-primary">Call the Showroom</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" id="footer">
+  <div class="wrap footer-grid">
+
+    <div class="footer-brand">
+      <a href="#top" class="logo logo-footer">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="36" height="36"><rect x="3" y="3" width="34" height="34" rx="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 11 L13 22 H19 L17 29 L27 17 H20 Z" fill="currentColor"/></svg>
+        </span>
+        <span class="logo-text">
+          <span class="logo-name">Monisha</span>
+          <span class="logo-sub">ELECTRONICS</span>
+        </span>
+      </a>
+      <p class="footer-tagline">Suri's trusted electronics showroom — genuine products, honest pricing, real service since day one.</p>
+      <div class="social-row">
+        <a href="#" aria-label="Facebook" class="social-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="#" aria-label="Instagram" class="social-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="WhatsApp" class="social-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.1-.4 0-.5-.1-.1-.5-1.2-.7-1.6-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9 1-.9 2.3 0 1.4 1 2.7 1.1 2.9.1.2 1.9 3 4.7 4.1 2.3.9 2.8.7 3.3.7.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.1-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z" fill="none" stroke="currentColor" stroke-width="0"/></svg></a>
+        <a href="#" aria-label="YouTube" class="social-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="2"/><path d="M10 9l6 3-6 3V9z" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="#categories">All Categories</a>
+      <a href="#bestsellers">Best Sellers</a>
+      <a href="#services">Repair Services</a>
+      <a href="#">Warranty Policy</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Store Locator</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Visit Us</h4>
+      <p class="footer-addr">Monisha Electronics<br>MD Bazar Road, Suri<br>Birbhum, West Bengal — 731101</p>
+      <p class="footer-addr"><a href="tel:+918617801040">+91 86178 01040</a></p>
+      <p class="footer-addr"><a href="mailto:hello@monishaelectronics.in">hello@monishaelectronics.in</a></p>
+    </div>
+
+  </div>
+
+  <div class="wrap footer-bottom">
+    <p>© 2026 Monisha Electronics, Suri. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Warranty Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- toast -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
